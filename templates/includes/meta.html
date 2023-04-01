@@ -1,0 +1,66 @@
+<meta name="robots" content="noindex">
+
+
+{% if meta_title %}
+<title>HaseKuse - {% block title %}{{ meta_title }}{% endblock %}</title> 
+{% else %}
+<title>HaseKuse</title> 
+{% endif %}
+
+{% if meta_description %}
+<meta name="description" content="{{ meta_description }}">
+{% else %}
+<meta name="description" content="The Harmony Association for Spiritual Empowerment and Knowledge of Universal Serenity (HASEKUSE) is a non-profit organization dedicated to promoting peace, spiritual growth, and harmonious coexistence among people of all nations and cultures.">
+{% endif %}
+
+
+{% if meta_author %}
+<meta name="author" content="Haradhan Sharma">
+{% endif %}
+
+{% if meta_title %}
+<meta property="og:title" content="HaseKuse - {{ meta_title }}">
+<meta property="og:title" content="HaseKuse - {{ meta_title }}">
+<meta property="twitter:title" content="HaseKuse - {{ meta_title }}">
+
+{% else %}
+<meta property="og:title" content="HaseKuse">
+<meta property="og:title" content="HaseKuse">
+<meta property="twitter:title" content="HaseKuse">
+
+{% endif %}
+
+{% if meta_description %}
+<meta property="og:description" content="{{ meta_description }}">
+<meta property="twitter:description" content="{{ meta_description }}">
+
+{% else %}
+<meta property="og:description" content="The Harmony Association for Spiritual Empowerment and Knowledge of Universal Serenity (HASEKUSE) is a non-profit organization dedicated to promoting peace, spiritual growth, and harmonious coexistence among people of all nations and cultures. ">
+<meta property="twitter:description" content="The Harmony Association for Spiritual Empowerment and Knowledge of Universal Serenity (HASEKUSE) is a non-profit organization dedicated to promoting peace, spiritual growth, and harmonious coexistence among people of all nations and cultures. ">
+
+{% endif %}
+<meta property="og:type" content="website">
+<meta property="twitter:card" content="summary_large_image">
+{% if og_image %}
+<meta property="og:image" content="{{ og_image }}">
+<meta property="twitter:image" content="{{ og_image }}">
+{% else %}
+<meta property="og:image" content="{% url 'logo' %}">
+<meta property="twitter:image" content="{% url 'logo' %}">
+{% endif %}
+
+{% if canonical  %}
+<meta property="og:url" content="{{ canonical }}">
+<link rel="canonical" href="{{canonical}}">
+<meta property="twitter:url" content="{{canonical}}">
+
+{% else %}
+<meta property="og:url" content="{{ request.build_absolute_uri }}">
+<link rel="canonical" href="{{ request.build_absolute_uri }}">
+<meta property="twitter:url" content="{{ request.build_absolute_uri }}">
+
+{% endif %}
+
+
+<meta name="twitter:site" content="@hasekuse" />
+<meta name="twitter:creator" content="@haradhansharma" />

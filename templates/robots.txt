@@ -1,0 +1,25 @@
+User-Agent: *
+Disallow: /admin/
+Disallow: /admin/*
+Disallow: /sankarmath/
+Disallow: /env/
+Disallow: /static/
+Disallow: /static/*
+Disallow: /private/
+Disallow: /media/
+Disallow: /media/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Sitemap: https://hasekuse.org/sitemap.xml

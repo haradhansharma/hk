@@ -1,0 +1,13 @@
+*.pyc  
+*~  
+__pycache__  
+env
+.vscode
+.DS_Store  
+db.sqlite3
+sankarmath/settings.py
+logs
+branding
+
+
+

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="{% url 'favicon' %}">
+    
+
+    {% include 'includes/meta.html' %}
+    <link type="text/css" href="{% static 'style.css' %}" rel="stylesheet" type="text/css"> 
+
+    <script src="{% static 'vendor/htmx/dist/htmx.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+
+    {% block extra_head %}
+    <!-- Add any additional CSS or JavaScript files here -->
+    {% endblock %}
+  </head>
+
+  <body>
+    {% block header %}
+    <!-- Add page header here -->
+    {% endblock %}
+    {% block content %}
+    <!-- Add page content here -->
+    {% endblock %}
+
+    {% block footer %}
+    {% endblock %}
+
+
+    {% include 'includes/scripts.html' %}
+    {% block extra_body %}
+    <!-- Add any additional JavaScript files here -->
+    {% endblock %}
+  </body>
+</html>

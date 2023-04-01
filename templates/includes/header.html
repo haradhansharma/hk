@@ -1,0 +1,38 @@
+
+
+
+<header class="py-3 mb-3 border-bottom fixed-top bg-light">
+    <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
+      <div class="dropdown">
+        <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{% url 'logobw' %}" alt="{{ organization_name_clean }}" title ="{{ organization_name_clean }}" width="200px" class="img-fluid">
+        </a>
+        <ul class="dropdown-menu text-small shadow">
+          <li><a class="dropdown-item active" href="/" aria-current="page">Home</a></li>
+          <li><a class="dropdown-item" href="/#mission">Our Mission</a></li>
+          <li><a class="dropdown-item" href="/#vision">Our Vision</a></li>
+          <li><a class="dropdown-item" href="/#workshops">Our Workshops</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="/#about">About Us</a></li>
+          <li><a class="dropdown-item" href="/#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="d-flex align-items-center justify-content-end">
+        
+
+        <div class="flex-shrink-0 dropdown">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{% url 'favicon' %}" alt = "HaseKuse" title = "HaseKuse" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small shadow" style="">
+            <li><a class="dropdown-item" href="{% url 'home:faq' %}">FAQ</a></li>
+          
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'home:terms_privacy' %}">Terms and Privacy</a></li>
+    
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>

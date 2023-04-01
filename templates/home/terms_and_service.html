@@ -1,0 +1,38 @@
+{% extends 'includes/base.html' %}
+{% block header %}
+    {% include 'includes/header.html' %}
+{% endblock %}
+
+{% block content %}
+<section class="container pb-3" style="padding-top:160px;">
+    <h1 class="wc800">{{ meta_title }}</h1>
+
+
+
+
+    <h2 class="wc600 text-uppercase border-top border-bottom border-danger border-2 mt-5">Terms of Use</h2>
+    <p class="wc300 mb-5">Welcome to the Harmony Association for Spiritual Empowerment and Knowledge of Universal Serenity (HASEKUSE) website. 
+        By accessing and using this website, you agree to comply with and be bound by the following terms and conditions of use. 
+        If you do not agree to these terms, you may not use this website.</p>
+    {% for clause in clauses %}
+        {% if clause.sec_type == 'terms' %}        
+        <h3 class="wc400 text-uppercase">{{ clause.heading }}</h3>
+        <p class="wc200">{{ clause.description|safe }}</p>        
+        {% endif %}
+    {% endfor %}
+    <h2 class="wc600 text-uppercase border-top border-bottom border-danger border-2 mt-5 ">Privacy Policy</h2>
+    <p class="wc300 mb-5">This Privacy Policy explains how Harmony Association for Spiritual 
+        Empowerment and Knowledge of Universal Serenity (HASEKUSE) ("we," "us," or "our") collects, 
+        uses, and discloses personal information when you visit our website at www.hasekuse.org (the "Site").</p>
+    {% for clause in clauses %}
+        {% if clause.sec_type == 'privacy' %}          
+        <h3 class="wc400 text-uppercase">{{ clause.heading }}</h3>
+        <p class="wc200">{{ clause.description|safe }}</p>
+        {% endif %}
+    {% endfor %}
+</section>
+{% endblock %}
+
+{% block footer %}
+    {% include 'includes/footer.html' %}
+{% endblock %}
