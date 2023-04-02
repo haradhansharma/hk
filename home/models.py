@@ -9,8 +9,14 @@ class Workshop(models.Model):
         return self.name
     
 class ContactMessage(models.Model):
+    TYPE_CHOICES = (
+        ('donation', 'Donation'),
+        ('volunteering', 'Volunteering'),
+    )
     name = models.CharField(max_length=255)
     email = models.EmailField()
+    interest_in = models.CharField(max_length=20, choices=TYPE_CHOICES)
+    in_workshops = models.ManyToManyField(Workshop, related_name='contact_workshops')
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 

@@ -10,7 +10,7 @@ from django.views.generic.edit import CreateView
 from .models import ContactMessage, TermsPrivacySection
 from .forms import ContactUsForm
 from django.contrib import messages
-
+from django.core.mail import send_mail
 
 def serve_favicon(request):
     logo_path = os.path.join(settings.MEDIA_ROOT, 'favicon.ico')
@@ -73,6 +73,14 @@ class ContactMessageCreateView(CreateView):
 
         # Set a success message to be displayed to the user
         messages.success(self.request, 'Your message has been sent. We will get back to you soon.')
+        in_workshops_list = "\n".join([f"- {ws.name}" for ws in form.cleaned_data['in_workshops']])
+        # Send email to the site admin
+        subject = f'HASEKUSE:-New contact form submission in {form.cleaned_data["interest_in"]}'
+        message = f"Name: {form.cleaned_data['name']}\nEmail: {form.cleaned_data['email']}\nInWorkshop:\n {in_workshops_list}\n\nMessage: {form.cleaned_data['message']}"
+        from_email = form.cleaned_data['email']
+        recipient_list = ['haradhan.sharma@gmail.com']
+        send_mail(subject, message, from_email, recipient_list, fail_silently=True)
+
 
         # Redirect to the success URL
         return super().form_valid(form)
@@ -83,6 +91,8 @@ class ContactMessageCreateView(CreateView):
 
         # Render the template with the invalid form
         return self.render_to_response(self.get_context_data(form=form))
+    
+    
     
     
 def faq(request):
