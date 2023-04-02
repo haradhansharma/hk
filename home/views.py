@@ -11,6 +11,7 @@ from .models import ContactMessage, TermsPrivacySection
 from .forms import ContactUsForm
 from django.contrib import messages
 from django.core.mail import send_mail
+from .helper import custom_send_mail
 
 def serve_favicon(request):
     logo_path = os.path.join(settings.MEDIA_ROOT, 'favicon.ico')
@@ -77,9 +78,10 @@ class ContactMessageCreateView(CreateView):
         # Send email to the site admin
         subject = f'HASEKUSE:-New contact form submission in {form.cleaned_data["interest_in"]}'
         message = f"Name: {form.cleaned_data['name']}\nEmail: {form.cleaned_data['email']}\nInWorkshop:\n {in_workshops_list}\n\nMessage: {form.cleaned_data['message']}"
-        from_email = form.cleaned_data['email']
-        recipient_list = ['haradhan.sharma@gmail.com']
-        send_mail(subject, message, from_email, recipient_list, fail_silently=True)
+        reply_to = [form.cleaned_data['email']]
+        from_email = settings.DEFAULT_FROM_EMAIL
+        recipient_list = [a[1] for a in settings.ADMINS] 
+        custom_send_mail(subject, message, from_email, recipient_list, reply_to = reply_to,  fail_silently=True)
 
 
         # Redirect to the success URL
